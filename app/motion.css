@@ -1,0 +1,61 @@
+/* Motion inspired by React Bits and MotionSites; scoped CSS loader adapted from alexruix (MIT). */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+.nav-item{position:relative;transition:background .22s,color .22s,box-shadow .22s}
+.nav-item::before{content:"";position:absolute;left:0;top:24%;height:52%;width:3px;border-radius:3px;background:var(--accent);opacity:0;transform:scaleY(.35);transition:opacity .22s,transform .28s var(--motion-ease)}
+.nav-item.active::before{opacity:1;transform:scaleY(1)}
+.nav-item.active .nav-icon{animation:nav-settle .35s var(--motion-ease)}
+.tabs button{position:relative;border-bottom-color:transparent!important}
+.tabs button::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--motion-ease)}
+.tabs button.active::after{transform:scaleX(1)}
+.library-card,.source-card,.code-project{position:relative;isolation:isolate;transition:transform .25s var(--motion-ease),box-shadow .25s,border-color .25s,background .25s}
+.library-card::before,.source-card::before,.code-project::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(230px circle at var(--spot-x,50%) var(--spot-y,50%),#ba93611b,transparent 75%);opacity:0;transition:opacity .25s;pointer-events:none;z-index:-1}
+@media(hover:hover){.library-card:hover::before,.source-card:hover::before,.code-project:hover::before{opacity:1}.source-card:hover,.code-project:hover{transform:translateY(-2px);box-shadow:0 6px 20px #59432909}}
+.card-arrow{transform:translate(-4px,4px);transition:opacity .2s,transform .3s var(--motion-ease)}
+.library-card:hover .card-arrow,.library-card:focus-visible .card-arrow{opacity:1;transform:translate(0,0)}
+.primary-button,.secondary-button{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s var(--motion-ease)}
+.primary-button:hover:not(:disabled){box-shadow:0 4px 12px #a85f4525;transform:translateY(-1px)}
+.primary-button:active:not(:disabled),.secondary-button:active:not(:disabled){transform:scale(.975)}
+.paper,.answer-content{animation:none}
+.answer-panel>summary .plus{transition:transform .28s var(--motion-ease)}
+dialog[open]{animation:dialog-enter .28s var(--motion-ease)}
+dialog[open]::backdrop{animation:backdrop-enter .25s ease-out}
+#toast{transition:opacity .25s,transform .35s var(--motion-ease);box-shadow:0 7px 26px #33281918}
+.loading-state{min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);font-size:12px;grid-column:1/-1}
+.step-loader{position:relative;display:block;flex-shrink:0;width:64px;height:60px;overflow:hidden}
+.step-loader i{position:absolute;bottom:15px;left:27px;height:16px;width:16px;border-radius:50%;background:var(--accent);animation:study-bounce .6s ease-in-out infinite alternate}
+.step-loader b{position:absolute;right:0;top:0;height:4px;width:24px;border-radius:3px;animation:study-steps 1.2s ease-in-out infinite}
+.loading-dots{display:flex;gap:5px;height:6px}
+.loading-dots i{width:4px;height:4px;background:var(--accent);border-radius:50%;animation:dot-breathe 1.2s ease-in-out infinite}
+.loading-dots i:nth-child(2){animation-delay:.15s}.loading-dots i:nth-child(3){animation-delay:.3s}
+.button-working{display:inline-flex;align-items:center;justify-content:center;gap:8px;opacity:.8!important}
+.button-spinner{display:inline-block;width:12px;height:12px;border:1.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:study-spin .7s linear infinite;flex-shrink:0}
+#activity{position:fixed;right:26px;bottom:24px;width:min(350px,calc(100vw - 34px));padding:17px 19px;background:#fffefaee;border:1px solid #ddcdbb;border-radius:10px;box-shadow:0 10px 36px #49351f15;z-index:15;pointer-events:none;backdrop-filter:blur(12px)}
+.activity-main{display:flex;align-items:center;gap:15px}
+.activity-copy{flex:1;min-width:0}.activity-title{font-size:12px;font-weight:500;display:block}.activity-detail{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.activity-time{font:10px Consolas,monospace;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.activity-meter{height:2px;margin:14px 0 12px;background:var(--line);overflow:hidden;border-radius:2px}
+.activity-meter::after{content:"";display:block;width:40%;height:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:activity-travel 1.5s ease-in-out infinite}
+.activity-steps{display:flex;align-items:center;justify-content:space-between;font-size:9px;color:#a29789}
+.activity-step{display:flex;align-items:center;gap:5px;transition:color .25s}.activity-step::before{content:"";width:5px;height:5px;border:1px solid currentColor;border-radius:50%}
+.activity-step.done{color:var(--sage)}.activity-step.done::before{background:currentColor}.activity-step.current{color:var(--accent)}
+.activity-result{display:none;align-items:center;justify-content:center;width:64px;height:60px;color:var(--sage)}
+.activity-result svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.activity-result .result-check{stroke-dasharray:30;stroke-dashoffset:30;animation:check-draw .45s .1s ease-out forwards}
+.activity-result .result-error{display:none}
+#activity[data-state=success] .step-loader,#activity[data-state=error] .step-loader{display:none}
+#activity[data-state=success] .activity-result,#activity[data-state=error] .activity-result{display:flex}
+#activity[data-state=success] .activity-meter::after{animation:none;width:100%;background:var(--sage)}
+#activity[data-state=error]{border-color:#cba392}#activity[data-state=error] .activity-result{color:var(--accent)}
+#activity[data-state=error] .result-check{display:none}#activity[data-state=error] .result-error{display:block}
+#activity[data-state=error] .activity-meter::after{animation:none;width:100%;background:var(--accent)}
+@keyframes study-bounce{0%{transform:translateY(0) scale(1,.7)}40%{transform:translateY(-9px) scale(.8,1.2)}60%{transform:translateY(-22px) scale(1)}100%{transform:translateY(-40px)}}
+@keyframes study-steps{from{box-shadow:0 5px 0 transparent,0 5px 0 #c7b6a0,-19px 27px 0 #c7b6a0,-38px 49px 0 #c7b6a0}to{box-shadow:0 5px 0 #c7b6a0,-19px 27px 0 #c7b6a0,-38px 49px 0 #c7b6a0,-38px 49px 0 transparent}}
+@keyframes study-spin{to{transform:rotate(360deg)}}
+@keyframes dot-breathe{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes activity-travel{from{transform:translateX(-110%)}to{transform:translateX(360%)}}
+@keyframes check-draw{to{stroke-dashoffset:0}}
+@keyframes nav-settle{from{transform:translateY(3px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes backdrop-enter{from{opacity:0}to{opacity:1}}
+@media(max-width:900px){#activity{right:17px;bottom:16px;width:min(310px,calc(100vw - 34px));padding:13px 16px}#toast{bottom:155px;left:50%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.activity-result .result-check{stroke-dashoffset:0}.step-loader b{box-shadow:0 5px 0 #c7b6a0,-19px 27px 0 #c7b6a0,-38px 49px 0 #c7b6a0}.activity-meter::after{transform:none;width:100%;opacity:.5}.library-card:hover,.source-card:hover,.code-project:hover,.primary-button:hover{transform:none!important}}

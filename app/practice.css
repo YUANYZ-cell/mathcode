@@ -1,0 +1,38 @@
+/* Use available width while keeping chapter navigation and code readable. */
+body{grid-template-columns:200px minmax(0,1fr)}
+main{padding:0 30px 30px}
+.sidebar{padding:28px 14px 22px}
+.nav-item>span:nth-child(2){min-width:0;flex:1}.nav-item small{white-space:normal;line-height:1.5}.count{flex-shrink:0}
+.course-heading{padding:27px 0 24px}
+.library-layout{grid-template-columns:176px minmax(0,1fr);gap:24px;padding-top:23px}
+.exercise-grid{grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px}
+.library-card{min-height:150px;padding:17px 19px}
+.library-card h3{font-size:17px;margin:8px 0 13px;line-height:1.55}
+.card-source{margin-top:10px}
+.library-sections button{padding:10px;font-size:12px}
+.library-intro>span{font-size:11px}
+.code-toolbar,.code-actions,.code-version-row,.code-path-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.code-toolbar{margin:0 0 20px}.code-toolbar>span{font-size:11px;color:var(--muted)}
+.code-settings{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:24px;font-size:12px;color:var(--muted)}
+.code-settings summary{cursor:pointer}.code-settings p{max-width:900px}
+.code-path-row input{flex:1;min-width:200px}
+.code-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}
+.code-project{display:block;width:100%;padding:16px;text-align:left;border:1px solid var(--line);border-radius:5px;margin-bottom:10px;background:var(--paper);overflow-wrap:anywhere}
+.code-project strong{display:block;font-size:14px}.code-project span{display:block;font-size:11px;margin:5px 0;color:var(--muted)}
+.code-project small{display:block;font-size:10px;color:var(--muted)}.code-project:hover,.code-project.active{border-color:#ba997e;background:#fffaf3}
+.code-preview{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:24px}
+.code-preview h2{font:23px var(--serif);margin:0 0 8px}.code-preview-heading small{font-size:10px;color:var(--muted);overflow-wrap:anywhere}
+.code-preview-heading .code-actions{margin:12px 0}.code-version-row{padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:12px}
+.code-version-row select{max-width:100%}.code-file h3{font-size:12px;font-weight:500;margin:18px 0 8px}.code-file pre{max-height:600px;overflow:auto}
+.practice-panel{border-top:1px solid var(--line);padding:22px 0;margin-top:26px}.practice-panel p{font-size:12px;color:var(--muted)}
+.practice-panel h3{margin:0;font:20px var(--serif)}.practice-panel .personal-heading{display:flex;justify-content:space-between;align-items:center}
+.item-code-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:14px 0}
+.item-code-row>div{margin-right:auto}.item-code-row strong{font-weight:500}.item-code-row small{display:block;font-size:10px;color:var(--muted)}
+#practice-dialog{max-width:560px;width:calc(100vw - 40px);padding:0;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.practice-form{padding:24px;font-size:13px}.practice-form label{display:block;margin:12px 0 6px}.practice-form input,.practice-form select{width:100%;max-width:100%;margin-bottom:18px}
+.practice-form .primary-button{margin-top:14px}#practice-error{color:var(--accent)}
+.practice-form input,.code-path-row input{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:9px;color:var(--ink)}
+@media(min-width:1600px){main{padding:0 36px 30px}.exercise-grid{grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}}
+@media(max-width:1150px){body{grid-template-columns:180px minmax(0,1fr)}main{padding:0 24px 25px}.library-layout{grid-template-columns:154px minmax(0,1fr);gap:20px}.exercise-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.code-layout{grid-template-columns:210px minmax(0,1fr);gap:16px}}
+@media(max-width:900px){body{grid-template-columns:155px minmax(0,1fr)}.library-layout{grid-template-columns:140px minmax(0,1fr);gap:16px}.exercise-grid{grid-template-columns:1fr}.code-layout{grid-template-columns:1fr}.code-projects{max-height:320px;overflow:auto}.code-preview{padding:18px}}
+@media(max-width:640px){body{grid-template-columns:120px minmax(0,1fr)}main{padding:0 14px 20px}.sidebar{padding:20px 8px}.library-layout{grid-template-columns:1fr}.library-card{min-height:135px}.code-toolbar{gap:10px}.code-toolbar .primary-button{width:100%}.code-preview{padding:14px}.item-code-row{gap:8px}}
